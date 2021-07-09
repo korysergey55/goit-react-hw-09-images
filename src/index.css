@@ -1,7 +1,7 @@
 html {
   box-sizing: border-box;
   width: 100vw;
-  overflow-x: hidden;
+  
 }
 
 *,
@@ -160,6 +160,7 @@ img {
  */
 
 .Overlay {
+  overflow: auto;
   position: fixed;
   top: 0;
   left: 0;
@@ -173,6 +174,8 @@ img {
 }
 
 .Modal {
+  overflow: hidden;
+  position: relative;
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 24px);
 }

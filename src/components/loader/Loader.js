@@ -6,7 +6,7 @@ import Button from "./button/Button";
 const Loader = ({ loading, showMore, currentPage }) => {
  return (
   <>
-   {currentPage ? (
+   {currentPage >1 ? (
     loading ? (
      <div className="loader">
       <Load

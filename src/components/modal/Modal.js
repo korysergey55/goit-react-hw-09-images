@@ -1,40 +1,41 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 
-class Modal extends Component {
- static propTypes = {
-  largeImageURL: PropTypes.string.isRequired,
-  taggleModal: PropTypes.func.isRequired,
- };
- 
- componentDidMount() {
-  window.addEventListener("keydown", this.handleEsc);
+
+const Modal = ({ largeImageURL, taggleModal }) => {
+ useEffect(() => {
+  window.addEventListener("keydown", handleEsc);
   const body = document.querySelector("body");
   body.style.overflow = "hidden";
- }
- componentWillUnmount() {
-  window.removeEventListener("keydown", this.handleEsc);
-  const body = document.querySelector("body");
-  body.style.overflow = "auto";
- }
 
- handleEsc = (e) => {
+  return () => {
+   window.removeEventListener("keydown", handleEsc);
+   const body = document.querySelector("body");
+   body.style.overflow = "auto";
+  };
+ });
+
+ const handleEsc = (e) => {
   if (e.code === "Escape") {
-   this.props.taggleModal('');
+   taggleModal("");
   }
  };
-
- render() {
-  return (
-   <>
-    <div className="Overlay" onClick={() => this.props.taggleModal('')}>
-     <div className="Modal">
-      <img src={this.props.largeImageURL} alt="pic" />
-     </div>
+ return (
+  <>
+   <div className="Overlay" onClick={() => taggleModal("")}>
+    <div className="Modal">
+     <img src={largeImageURL} alt="pic" />
     </div>
-   </>
-  );
- }
-}
+   </div>
+  </>
+ );
+};
+
+Modal.propTypes = {
+ largeImageURL: PropTypes.string.isRequired,
+ taggleModal: PropTypes.func.isRequired,
+};
 
 export default Modal;
+
