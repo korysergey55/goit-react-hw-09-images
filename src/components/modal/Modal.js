@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from "prop-types";
 import { useEffect } from "react";
+import styles from './Modal.module.css'
 
 
 const Modal = ({ largeImageURL, taggleModal }) => {
+
  useEffect(() => {
   window.addEventListener("keydown", handleEsc);
   const body = document.querySelector("body");
@@ -23,8 +25,8 @@ const Modal = ({ largeImageURL, taggleModal }) => {
  };
  return (
   <>
-   <div className="Overlay" onClick={() => taggleModal("")}>
-    <div className="Modal">
+   <div className={styles.Overlay} onClick={() => taggleModal("")}>
+    <div className={styles.Modal}>
      <img src={largeImageURL} alt="pic" />
     </div>
    </div>

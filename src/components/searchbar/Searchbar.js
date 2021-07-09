@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import styles from './Searchbar.module.css'
 
 const Searchbar = ({ changeSearchWord }) => {
  const [state, setState] = useState('');
@@ -16,15 +17,15 @@ const Searchbar = ({ changeSearchWord }) => {
  };
  return (
   <>
-   <header className="Searchbar">
-    <form className="SearchForm" onSubmit={handleSubmitForm}>
-     <button type="submit" className="SearchForm-button">
-      <span className="SearchForm-button-label">Search</span>
+   <header className={styles.Searchbar}>
+    <form className={styles.SearchForm} onSubmit={handleSubmitForm}>
+     <button type="submit" className={styles.SearchFormButton}>
+      <span className={styles.SearchFormButtonLabel}>Search</span>
      </button>
 
      <input
       onChange={saveInputValueToState}
-      className="SearchForm-input"
+      className={styles.SearchFormInput}
       type="text"
       name="searchWord"
       autocomplete="off"
